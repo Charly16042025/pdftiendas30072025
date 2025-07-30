@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supermercados MX - Listas de Precios</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(135deg, #4CAF50, #2196F3);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .tiendas {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .tienda-card {
+            background: white;
+            border-radius: 8px;
+            width: 300px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .tienda-card:hover {
+            transform: translateY(-10px);
+        }
+        .tienda-img {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+        .tienda-1 {
+            background-image: url('https://images.unsplash.com/photo-1604719312566-8912e9227c6a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');
+        }
+        .tienda-2 {
+            background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');
+        }
+        .tienda-info {
+            padding: 20px;
+        }
+        .tienda-info h2 {
+            margin-top: 0;
+            color: #2196F3;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #3e8e41;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            background: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Supermercados MX</h1>
+        <p>Compara precios entre tus tiendas favoritas</p>
+    </header>
+
+    <div class="container">
+        <div class="intro">
+            <h2>Listas de Precios Actualizadas</h2>
+            <p>Selecciona una tienda para ver su catálogo completo de productos con precios y códigos de barras.</p>
+        </div>
+
+        <div class="tiendas">
+            <div class="tienda-card">
+                <div class="tienda-img tienda-1"></div>
+                <div class="tienda-info">
+                    <h2>El Baratón</h2>
+                    <p>Los mejores precios en la Ciudad de México. Gran variedad de productos de despensa y limpieza.</p>
+                    <a href="tabla_de_precios_1.html" class="btn">Ver Lista de Precios</a>
+                </div>
+            </div>
+
+            <div class="tienda-card">
+                <div class="tienda-img tienda-2"></div>
+                <div class="tienda-info">
+                    <h2>La Económica</h2>
+                    <p>Ofertas exclusivas en Guadalajara. Productos de calidad a precios accesibles.</p>
+                    <a href="tabla_de_precios_2.html" class="btn">Ver Lista de Precios</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 Supermercados MX. Todos los derechos reservados.</p>
+        <p>Contacto: info@supermercadosmx.com | Tel: 55 1234 5678</p>
+    </footer>
+</body>
+</html>
