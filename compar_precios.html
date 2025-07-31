@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Supermercados MX - Comparador de Precios</title>
+<style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(135deg, #4CAF50, #2196F3);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .tiendas {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .tienda-card {
+            background: white;
+            border-radius: 8px;
+            width: 300px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .tienda-card:hover {
+            transform: translateY(-10px);
+        }
+        .tienda-img {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+        .baraton {
+            background-image: url('https://images.unsplash.com/photo-1604719312566-8912e9227c6a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');
+        }
+        .economica {
+            background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');
+        }
+        .megadescuentos {
+            background-image: url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');
+        }
+        .fresco {
+            background-image: url('https://images.unsplash.com/photo-1518843875459-f738682238a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');
+        }
+        .superahorro {
+            background-image: url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');
+        }
+		.esquina {
+    background-image: url('https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');
+}
+        .tienda-info {
+            padding: 20px;
+        }
+        .tienda-info h2 {
+            margin-top: 0;
+            color: #2196F3;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #3e8e41;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            background: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<header>
+<h1>Supermercados MX</h1>
+<p>Compara precios entre las mejores tiendas</p>
+</header>
+<div class="container">
+<div class="intro">
+<h2>Listas de Precios Actualizadas</h2>
+<p>Selecciona una tienda para ver su catálogo completo con 60 productos cada una.</p>
+</div>
+<div class="tiendas">
+<!-- Tienda 1: El Baratón -->
+<div class="tienda-card">
+<div class="tienda-img baraton"></div>
+<div class="tienda-info">
+<h2>El Baratón</h2>
+<p>Los mejores precios en CDMX. ¡10 productos exclusivos!</p>
+<a class="btn" href="El_Baraton_formato.xlsx">Descargar Excel</a>
+</div>
+</div>
+<!-- Tienda 2: La Económica -->
+<div class="tienda-card">
+<div class="tienda-img economica"></div>
+<div class="tienda-info">
+<h2>La Económica</h2>
+<p>Ofertas exclusivas en Guadalajara. ¡10 productos únicos!</p>
+<a class="btn" href="La_Economica_formato.xlsx">Descargar Excel</a>
+</div>
+</div>
+<!-- Tienda 3: MegaDescuentos -->
+<div class="tienda-card">
+<div class="tienda-img megadescuentos"></div>
+<div class="tienda-info">
+<h2>MegaDescuentos</h2>
+<p>¡Compra por volumen y ahorra! En Puebla.</p>
+<a class="btn" href="MegaDescuentos_formato.xlsx">Descargar Excel</a>
+</div>
+</div>
+<!-- Tienda 4: Fresco y Natural -->
+<div class="tienda-card">
+<div class="tienda-img fresco"></div>
+<div class="tienda-info">
+<h2>Fresco y Natural</h2>
+<p>Productos 100% orgánicos en Mérida.</p>
+<a class="btn" href="Fresco_y_Natural_formato.xlsx">Descargar Excel</a>
+</div>
+</div>
+<!-- Tienda 5: SuperAhorro Express -->
+<div class="tienda-card">
+<div class="tienda-img superahorro"></div>
+<div class="tienda-info">
+<h2>SuperAhorro Express</h2>
+<p>¡Ofertas relámpago en Monterrey! Combos familiares exclusivos.</p>
+<a class="btn" href="SuperAhorro_Express_formato.xlsx">Descargar Excel</a>
+</div>
+</div>
+<!-- Dentro de <div class="tiendas"> -->
+<div class="tienda-card">
+<div class="tienda-img esquina" style="background-image: url('https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=80')"></div>
+<div class="tienda-info">
+<h2>La Esquina</h2>
+<p>Productos típicos de Oaxaca. ¡10 especialidades regionales!</p>
+<a class="btn" href="La_Esquina_formato.xlsx">Descargar Excel</a>
+</div>
+</div>
+</div>
+</div>
+<footer>
+<p>© 2023 Supermercados MX. Todos los derechos reservados.</p>
+<p>Contacto: info@supermercadosmx.com | Tel: 55 1234 5678</p>
+</footer>
+</body>
+</html>
