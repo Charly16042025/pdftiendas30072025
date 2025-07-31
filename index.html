@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="index, follow">
-
-    <title>Supermercados MX - Listas de Precios</title>
+    <title>Supermercados MX - Comparador de Precios</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -60,12 +58,24 @@
             background-size: cover;
             background-position: center;
         }
-        .tienda-1 {
+        .baraton {
             background-image: url('https://images.unsplash.com/photo-1604719312566-8912e9227c6a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');
         }
-        .tienda-2 {
+        .economica {
             background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');
         }
+        .megadescuentos {
+            background-image: url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');
+        }
+        .fresco {
+            background-image: url('https://images.unsplash.com/photo-1518843875459-f738682238a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');
+        }
+        .superahorro {
+            background-image: url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');
+        }
+		.esquina {
+    background-image: url('https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');
+}
         .tienda-info {
             padding: 20px;
         }
@@ -99,33 +109,76 @@
 <body>
     <header>
         <h1>Supermercados MX</h1>
-        <p>Compara precios entre tus tiendas favoritas</p>
+        <p>Compara precios entre las mejores tiendas</p>
     </header>
 
     <div class="container">
         <div class="intro">
             <h2>Listas de Precios Actualizadas</h2>
-            <p>Selecciona una tienda para ver su catálogo completo de productos con precios y códigos de barras.</p>
+            <p>Selecciona una tienda para ver su catálogo completo con 60 productos cada una.</p>
         </div>
 
         <div class="tiendas">
+            <!-- Tienda 1: El Baratón -->
             <div class="tienda-card">
-                <div class="tienda-img tienda-1"></div>
+                <div class="tienda-img baraton"></div>
                 <div class="tienda-info">
                     <h2>El Baratón</h2>
-                    <p>Los mejores precios en la Ciudad de México. Gran variedad de productos de despensa y limpieza.</p>
-                    <a href="https://pdftiendas30072025.vercel.app/tabla_de_precios_1.html" class="btn">Ver Lista de Precios</a>
+                    <p>Los mejores precios en CDMX. ¡10 productos exclusivos!</p>
+                    <a href="tienda_baraton.html" class="btn">Ver Precios</a>
                 </div>
             </div>
 
+            <!-- Tienda 2: La Económica -->
             <div class="tienda-card">
-                <div class="tienda-img tienda-2"></div>
+                <div class="tienda-img economica"></div>
                 <div class="tienda-info">
                     <h2>La Económica</h2>
-                    <p>Ofertas exclusivas en Guadalajara. Productos de calidad a precios accesibles.</p>
-                    <a href="https://pdftiendas30072025.vercel.app/tabla_de_precios_2.html" class="btn">Ver Lista de Precios</a>
+                    <p>Ofertas exclusivas en Guadalajara. ¡10 productos únicos!</p>
+                    <a href="tienda_economica.html" class="btn">Ver Precios</a>
                 </div>
             </div>
+
+            <!-- Tienda 3: MegaDescuentos -->
+            <div class="tienda-card">
+                <div class="tienda-img megadescuentos"></div>
+                <div class="tienda-info">
+                    <h2>MegaDescuentos</h2>
+                    <p>¡Compra por volumen y ahorra! En Puebla.</p>
+                    <a href="tienda_megadescuentos.html" class="btn">Ver Precios</a>
+                </div>
+            </div>
+
+            <!-- Tienda 4: Fresco y Natural -->
+            <div class="tienda-card">
+                <div class="tienda-img fresco"></div>
+                <div class="tienda-info">
+                    <h2>Fresco y Natural</h2>
+                    <p>Productos 100% orgánicos en Mérida.</p>
+                    <a href="tienda_fresconatural.html" class="btn">Ver Precios</a>
+                </div>
+            </div>
+
+            <!-- Tienda 5: SuperAhorro Express -->
+            <div class="tienda-card">
+                <div class="tienda-img superahorro"></div>
+                <div class="tienda-info">
+                    <h2>SuperAhorro Express</h2>
+                    <p>¡Ofertas relámpago en Monterrey! Combos familiares exclusivos.</p>
+                    <a href="tienda_superahorro.html" class="btn">Ver Ofertas</a>
+                </div>
+            </div>
+			
+			<!-- Dentro de <div class="tiendas"> -->
+<div class="tienda-card">
+    <div class="tienda-img esquina" style="background-image: url('https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')"></div>
+    <div class="tienda-info">
+        <h2>La Esquina</h2>
+        <p>Productos típicos de Oaxaca. ¡10 especialidades regionales!</p>
+        <a href="tienda_esquina.html" class="btn">Ver Productos</a>
+    </div>
+</div>
+			
         </div>
     </div>
 

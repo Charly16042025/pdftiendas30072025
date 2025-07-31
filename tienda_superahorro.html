@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperAhorro Express - Lista de Precios</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .tienda-info { 
+            background: #FFF3E0; 
+            padding: 15px; 
+            border-radius: 5px; 
+            margin-bottom: 20px;
+            border-left: 5px solid #FF9800;
+        }
+        h1 { color: #FF9800; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #FF9800; color: white; }
+        tr:nth-child(even) { background-color: #FFF8E1; }
+        .exclusivo { background-color: #FFF3E0 !important; }
+    </style>
+</head>
+<body>
+    <div class="tienda-info">
+        <h1>SuperAhorro Express</h1>
+        <p><strong>📍 Dirección:</strong> Av. Hidalgo 789, Monterrey, NL</p>
+        <p><strong>📞 Teléfono:</strong> 81 2345 6789</p>
+        <p><strong>✉ Email:</strong> contacto@superahorro.mx</p>
+        <p><strong>🕒 Horario:</strong> 24/7</p>
+    </div>
+
+    <h2>🔥 Ofertas Relámpago (60 productos)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th width="15%">Código</th>
+                <th width="60%">Producto</th>
+                <th width="25%">Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- === 5 PRODUCTOS COMPARTIDOS === -->
+            <tr><td>750100001001</td><td>Arroz 1kg</td><td class="precio">$21.90</td></tr>
+            <tr><td>750100001002</td><td>Frijol 1kg</td><td class="precio">$27.50</td></tr>
+            <tr><td>750100001003</td><td>Aceite vegetal 1L</td><td class="precio">$41.00</td></tr>
+            <tr><td>750100001004</td><td>Azúcar refinada 1kg</td><td class="precio">$19.90</td></tr>
+            <tr><td>750100001005</td><td>Sal de mesa 1kg</td><td class="precio">$9.90</td></tr>
+
+            <!-- === 45 PRODUCTOS COMUNES === -->
+            <tr><td>750200002001</td><td>Leche entera 1L</td><td class="precio">$25.50</td></tr>
+            <tr><td>750200002002</td><td>Huevo blanco 30 piezas</td><td class="precio">$58.90</td></tr>
+            <tr><td>750200002003</td><td>Pan de caja 680g</td><td class="precio">$30.00</td></tr>
+            <tr><td>750200002004</td><td>Jabón en polvo 3kg</td><td class="precio">$89.90</td></tr>
+            <tr><td>750200002005</td><td>Papel higiénico 12 rollos</td><td class="precio">$125.00</td></tr>
+            <tr><td>750200002006</td><td>Atún en agua 140g</td><td class="precio">$16.90</td></tr>
+            <tr><td>750200002007</td><td>Sardinas en salsa 120g</td><td class="precio">$13.90</td></tr>
+            <tr><td>750200002008</td><td>Galletas saladas 400g</td><td class="precio">$32.00</td></tr>
+            <tr><td>750200002009</td><td>Refresco cola 3L</td><td class="precio">$38.50</td></tr>
+            <tr><td>750200002010</td><td>Agua purificada 5L</td><td class="precio">$25.00</td></tr>
+            <!-- ... (otros 35 productos comunes) ... -->
+
+            <!-- === 10 PRODUCTOS EXCLUSIVOS === -->
+            <tr class="exclusivo"><td>750500005001</td><td>Combo familiar (5kg arroz + 2L aceite)</td><td class="precio">$199.00</td></tr>
+            <tr class="exclusivo"><td>750500005002</td><td>Despensa básica (15 productos)</td><td class="precio">$499.00</td></tr>
+            <tr class="exclusivo"><td>750500005003</td><td>Pack 24 cervezas</td><td class="precio">$299.00</td></tr>
+            <tr class="exclusivo"><td>750500005004</td><td>Canasta navideña</td><td class="precio">$899.00</td></tr>
+            <tr class="exclusivo"><td>750500005005</td><td>Botana gigante (papas + nachos)</td><td class="precio">$129.00</td></tr>
+            <tr class="exclusivo"><td>750500005006</td><td>Kit limpieza premium</td><td class="precio">$349.00</td></tr>
+            <tr class="exclusivo"><td>750500005007</td><td>Despensa mensual</td><td class="precio">$1,199.00</td></tr>
+            <tr class="exclusivo"><td>750500005008</td><td>Pack 12 refrescos 3L</td><td class="precio">$399.00</td></tr>
+            <tr class="exclusivo"><td>750500005009</td><td>Supercombo desayunos</td><td class="precio">$259.00</td></tr>
+            <tr class="exclusivo"><td>750500005010</td><td>Mega pack agua 40L</td><td class="precio">$159.00</td></tr>
+        </tbody>
+    </table>
+
+    <div style="margin-top: 30px; text-align: center; font-style: italic;">
+        <p>⚠️ Precios válidos solo por tiempo limitado ⚠️</p>
+    </div>
+</body>
+</html>
