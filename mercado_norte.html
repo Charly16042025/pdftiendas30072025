@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Mercado Norte — Lista de productos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;max-width:980px;margin:40px auto;padding:0 16px}
+    h1{margin:0 0 6px}
+    .muted{color:#666;margin:0 0 16px}
+    table{width:100%;border-collapse:collapse}
+    th,td{border:1px solid #ddd;padding:10px}
+    th{background:#fafafa;text-align:left}
+    tbody tr:hover{background:#f6fffa}
+    .price{white-space:nowrap}
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Store",
+    "name":"Mercado Norte",
+    "address":{"@type":"PostalAddress","addressLocality":"Monterrey","addressCountry":"MX"},
+    "url":"https://example.com/mercado-norte",
+    "makesOffer":[
+      {"@type":"Offer","priceCurrency":"MXN","price":"26.00","itemOffered":{"@type":"Product","name":"Arroz extra 1kg","sku":"750987650001","category":"Granos"}},
+      {"@type":"Offer","priceCurrency":"MXN","price":"34.90","itemOffered":{"@type":"Product","name":"Aceite vegetal 900ml","sku":"750987650002","category":"Despensa"}},
+      {"@type":"Offer","priceCurrency":"MXN","price":"15.50","itemOffered":{"@type":"Product","name":"Sal de mesa 1kg","sku":"750987650003","category":"Despensa"}},
+      {"@type":"Offer","priceCurrency":"MXN","price":"12.90","itemOffered":{"@type":"Product","name":"Tortillas de maíz 1kg","sku":"750987650004","category":"Tortillería"}},
+      {"@type":"Offer","priceCurrency":"MXN","price":"39.00","itemOffered":{"@type":"Product","name":"Pasta para sopa 500g","sku":"750987650005","category":"Despensa"}}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Mercado Norte</h1>
+    <p class="muted">Monterrey, MX · Catálogo estático con <code>data-attributes</code></p>
+  </header>
+
+  <table aria-label="Catálogo de productos — Mercado Norte">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Producto</th>
+        <th>Presentación</th>
+        <th>Categoría</th>
+        <th class="price">Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-codigo="750987650001" data-nombre="Arroz extra" data-presentacion="1kg" data-categoria="Granos" data-precio="26.00">
+        <td>750987650001</td><td>Arroz extra</td><td>1kg</td><td>Granos</td><td class="price">$26.00</td>
+      </tr>
+      <tr data-codigo="750987650002" data-nombre="Aceite vegetal" data-presentacion="900ml" data-categoria="Despensa" data-precio="34.90">
+        <td>750987650002</td><td>Aceite vegetal</td><td>900ml</td><td>Despensa</td><td class="price">$34.90</td>
+      </tr>
+      <tr data-codigo="750987650003" data-nombre="Sal de mesa" data-presentacion="1kg" data-categoria="Despensa" data-precio="15.50">
+        <td>750987650003</td><td>Sal de mesa</td><td>1kg</td><td>Despensa</td><td class="price">$15.50</td>
+      </tr>
+      <tr data-codigo="750987650004" data-nombre="Tortillas de maíz" data-presentacion="1kg" data-categoria="Tortillería" data-precio="12.90">
+        <td>750987650004</td><td>Tortillas de maíz</td><td>1kg</td><td>Tortillería</td><td class="price">$12.90</td>
+      </tr>
+      <tr data-codigo="750987650005" data-nombre="Pasta para sopa" data-presentacion="500g" data-categoria="Despensa" data-precio="39.00">
+        <td>750987650005</td><td>Pasta para sopa</td><td>500g</td><td>Despensa</td><td class="price">$39.00</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
