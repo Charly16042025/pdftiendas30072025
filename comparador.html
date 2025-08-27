@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Comparador de Precios — Supermercados MX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: system-ui, Segoe UI, Tahoma, Arial, sans-serif; margin: 0; background:#f7f7f8; color:#222; }
+    header { background: linear-gradient(135deg, #4CAF50, #2196F3); color:#fff; padding:20px; }
+    main { max-width:1200px; margin:20px auto; background:#fff; border-radius:10px; box-shadow:0 6px 16px rgba(0,0,0,.08); padding:20px; }
+    h1 { margin:0 0 6px; }
+    .controls { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:16px; }
+    input[type="text"] { flex:1; min-width:240px; padding:10px 12px; border:1px solid #ddd; border-radius:8px; }
+    button { padding:10px 14px; border:0; border-radius:8px; background:#4CAF50; color:#fff; cursor:pointer; }
+    button.secondary{ background:#555; }
+    .pill{ display:inline-block; background:#eee; border-radius:999px; padding:4px 10px; font-size:12px; margin-left:8px;}
+    table { width:100%; border-collapse: collapse; margin-top:10px; }
+    th, td { border-bottom:1px solid #eee; padding:8px 10px; text-align:left; }
+    th { background:#fafafa; position:sticky; top:0; z-index:1; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:16px; margin-top:16px; }
+    .card { background:#fafafa; border:1px solid #eee; border-radius:10px; padding:12px; }
+    .muted{ color:#666; font-size:12px; }
+    @media (max-width: 900px){ .grid{ grid-template-columns: 1fr; } }
+    .status { font-size:13px; color:#333; margin-left:auto; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Comparador de Precios</h1>
+    <div>Supermercados MX <span class="pill">beta</span></div>
+  </header>
+  <main>
+    <div class="controls">
+      <input id="q" type="text" placeholder="Busca productos (ej. yogurt natural, pan integral, jugo de naranja)" />
+      <button id="recalcular">Extremos por tienda</button>
+      <button class="secondary" id="extremosProducto">Extremos por producto</button>
+      <span id="status" class="status">Cargando tiendas...</span>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Resultados</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Tienda</th>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Barcode</th>
+              <th>URL</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>Resumen</h3>
+        <div class="muted">Más caro / más barato considerando solo los productos encontrados.</div>
+        <div id="extremos"></div>
+        <hr />
+        <h4>Extremos por producto (donde exista)</h4>
+        <div id="extremosProductoDiv"></div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+  (async () => {
+    const STATUS = document.getElementById('status');
+    const q = document.getElementById('q');
+    const tbody = document.getElementById('tbody');
+    const extremosDiv = document.getElementById('extremos');
+    const extremosProductoDiv = document.getElementById('extremosProductoDiv');
+
+    // 1) Carga índice de tiendas
+    const storesUrl = 'https://pdftiendas30072025.vercel.app/stores.json'; // <= usa URL absoluta
+    let storeUrls = [];
+    try {
+      storeUrls = await (await fetch(storesUrl)).json();
+      STATUS.textContent = `Tiendas detectadas: ${storeUrls.length}`;
+    } catch (e) {
+      STATUS.textContent = 'No pude cargar stores.json';
+      console.error(e);
+      return;
+    }
+
+    // 2) Parser & selectores (ajusta si tu HTML cambia)
+    const parser = new DOMParser();
+    const SELECTORS = {
+      storeName: 'h1, .store-title, [data-store-name]',
+      productRows: 'table tbody tr, .product-list .item',
+      colProduct: 'td:nth-child(1), .item .name',
+      colPrice: 'td:nth-child(2), .item .price',
+      colBarcode: 'td:nth-child(3), .item .barcode'
+    };
+
+    const allRows = [];
+    let done = 0;
+
+    for (const url of storeUrls) {
+      try {
+        const html = await (await fetch(url)).text();
+        const doc = parser.parseFromString(html, 'text/html');
+
+        const storeName = (doc.querySelector(SELECTORS.storeName)?.textContent || '').trim() || new URL(url).pathname.replace('/','');
+        const rows = doc.querySelectorAll(SELECTORS.productRows);
+
+        rows.forEach(r => {
+          const name = (r.querySelector(SELECTORS.colProduct)?.textContent || '').trim();
+          const rawPrice = (r.querySelector(SELECTORS.colPrice)?.textContent || '').trim();
+          const barcode = (r.querySelector(SELECTORS.colBarcode)?.textContent || '').trim();
+
+          // Normaliza precio: soporta $ 1,234.56 ó 1.234,56
+          const priceTxt = rawPrice.replace(/[^0-9,.\-]/g,'');
+          let price = NaN;
+          if (priceTxt.includes(',') && priceTxt.lastIndexOf(',') > priceTxt.lastIndexOf('.')) {
+            // Formato europeo: 1.234,56 -> 1234.56
+            price = parseFloat(priceTxt.replace(/\./g,'').replace(',','.'));
+          } else {
+            // Formato US/MX: 1,234.56 -> 1234.56
+            price = parseFloat(priceTxt.replace(/,/g,''));
+          }
+
+          if (name && Number.isFinite(price)) {
+            allRows.push({ store: storeName, url, name, price, barcode });
+          }
+        });
+
+      } catch (e) {
+        console.warn('Error leyendo', url, e);
+      } finally {
+        done++;
+        STATUS.textContent = `Cargando tiendas... ${done}/${storeUrls.length}`;
+      }
+    }
+
+    STATUS.textContent = `Listo: ${allRows.length} filas procesadas de ${storeUrls.length} tiendas`;
+
+    function render(filter = '') {
+      tbody.innerHTML = '';
+      const rows = filter
+        ? allRows.filter(r => r.name.toLowerCase().includes(filter.toLowerCase()))
+        : allRows;
+
+      for (const r of rows) {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${r.store}</td>
+          <td>${r.name}</td>
+          <td>$${r.price.toFixed(2)}</td>
+          <td>${r.barcode || ''}</td>
+          <td><a href="${r.url}" target="_blank">ver</a></td>
+        `;
+        tbody.appendChild(tr);
+      }
+    }
+
+    function extremosPorTienda() {
+      const byStore = new Map();
+      for (const r of allRows) {
+        if (!byStore.has(r.store)) byStore.set(r.store, []);
+        byStore.get(r.store).push(r);
+      }
+      const lines = [];
+      for (const [store, items] of byStore.entries()) {
+        const max = items.reduce((a,b)=> b.price > a.price ? b : a);
+        const min = items.reduce((a,b)=> b.price < a.price ? b : a);
+        lines.push(`<li><b>${store}</b> — Más caro: ${max.name} ($${max.price.toFixed(2)}), Más barato: ${min.name} ($${min.price.toFixed(2)})</li>`);
+      }
+      extremosDiv.innerHTML = `<ul>${lines.join('')}</ul>`;
+    }
+
+    function extremosPorProducto() {
+      // Agrupa por producto (case-insensitive, normalizado)
+      const norm = s => s.toLowerCase().replace(/\s+/g,' ').trim();
+      const byProd = new Map();
+      for (const r of allRows) {
+        const key = norm(r.name);
+        if (!byProd.has(key)) byProd.set(key, []);
+        byProd.get(key).push(r);
+      }
+      const lines = [];
+      for (const [pname, items] of byProd.entries()) {
+        // Ignora productos con solo 1 ocurrencia si quieres comparar entre tiendas
+        if (items.length < 2) continue;
+        const max = items.reduce((a,b)=> b.price > a.price ? b : a);
+        const min = items.reduce((a,b)=> b.price < a.price ? b : a);
+        lines.push(`<li><b>${items[0].name}</b> — Barato: ${min.store} ($${min.price.toFixed(2)}), Caro: ${max.store} ($${max.price.toFixed(2)}) — ocurrencias: ${items.length}</li>`);
+      }
+      extremosProductoDiv.innerHTML = lines.length ? `<ul>${lines.join('')}</ul>` : `<div class="muted">No hay suficientes coincidencias entre tiendas.</div>`;
+    }
+
+    // Eventos
+    q.addEventListener('input', () => render(q.value));
+    document.getElementById('recalcular').addEventListener('click', extremosPorTienda);
+    document.getElementById('extremosProducto').addEventListener('click', extremosPorProducto);
+
+    // Render inicial (sin filtro)
+    render();
+  })();
+  </script>
+</body>
+</html>
