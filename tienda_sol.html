@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Tienda Sol — Lista de productos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;max-width:980px;margin:40px auto;padding:0 16px}
+    h1{margin:0 0 6px}
+    .muted{color:#666;margin:0 0 16px}
+    table{width:100%;border-collapse:collapse}
+    th,td{border:1px solid #ddd;padding:10px}
+    th{background:#fafafa;text-align:left}
+    tbody tr:hover{background:#fffdf2}
+    .price{white-space:nowrap}
+  </style>
+
+  <!-- JSON-LD con datos de la tienda y productos -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Store",
+    "name":"Tienda Sol",
+    "address":{"@type":"PostalAddress","addressLocality":"Guadalajara","addressCountry":"MX"},
+    "url":"https://example.com/tienda-sol",
+    "makesOffer":[
+      {
+        "@type":"Offer",
+        "priceCurrency":"MXN",
+        "price":"29.90",
+        "itemOffered":{"@type":"Product","name":"Leche entera 1L","sku":"750123450001","category":"Lácteos"}
+      },
+      {
+        "@type":"Offer",
+        "priceCurrency":"MXN",
+        "price":"18.50",
+        "itemOffered":{"@type":"Product","name":"Pan integral 680g","sku":"750123450002","category":"Panificación"}
+      },
+      {
+        "@type":"Offer",
+        "priceCurrency":"MXN",
+        "price":"45.00",
+        "itemOffered":{"@type":"Product","name":"Cereal multigrano 500g","sku":"750123450003","category":"Desayuno"}
+      },
+      {
+        "@type":"Offer",
+        "priceCurrency":"MXN",
+        "price":"22.90",
+        "itemOffered":{"@type":"Product","name":"Yogur natural 900g","sku":"750123450004","category":"Lácteos"}
+      },
+      {
+        "@type":"Offer",
+        "priceCurrency":"MXN",
+        "price":"32.00",
+        "itemOffered":{"@type":"Product","name":"Jugo de naranja 1L","sku":"750123450005","category":"Bebidas"}
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Tienda Sol</h1>
+    <p class="muted">Guadalajara, MX · Catálogo estático (HTML con <code>data-*</code> + JSON-LD)</p>
+  </header>
+
+  <table aria-label="Catálogo de productos — Tienda Sol">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Producto</th>
+        <th>Presentación</th>
+        <th>Categoría</th>
+        <th class="price">Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-codigo="750123450001" data-nombre="Leche entera" data-presentacion="1L" data-categoria="Lácteos" data-precio="29.90">
+        <td>750123450001</td><td>Leche entera</td><td>1L</td><td>Lácteos</td><td class="price">$29.90</td>
+      </tr>
+      <tr data-codigo="750123450002" data-nombre="Pan integral" data-presentacion="680g" data-categoria="Panificación" data-precio="18.50">
+        <td>750123450002</td><td>Pan integral</td><td>680g</td><td>Panificación</td><td class="price">$18.50</td>
+      </tr>
+      <tr data-codigo="750123450003" data-nombre="Cereal multigrano" data-presentacion="500g" data-categoria="Desayuno" data-precio="45.00">
+        <td>750123450003</td><td>Cereal multigrano</td><td>500g</td><td>Desayuno</td><td class="price">$45.00</td>
+      </tr>
+      <tr data-codigo="750123450004" data-nombre="Yogur natural" data-presentacion="900g" data-categoria="Lácteos" data-precio="22.90">
+        <td>750123450004</td><td>Yogur natural</td><td>900g</td><td>Lácteos</td><td class="price">$22.90</td>
+      </tr>
+      <tr data-codigo="750123450005" data-nombre="Jugo de naranja" data-presentacion="1L" data-categoria="Bebidas" data-precio="32.00">
+        <td>750123450005</td><td>Jugo de naranja</td><td>1L</td><td>Bebidas</td><td class="price">$32.00</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
